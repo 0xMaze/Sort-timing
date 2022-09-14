@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sorting algorithms timer</h1>
+        <div class="form">
+            <form method="post">
+                <label for="array_size">Array size:</label>
+                <select name="array_size" id="array_size">
+                    <option value="big">big</option>
+                    <option value="small">small</option>
+                </select>
+                <label for="array_type">Array type:</label>
+                <select name="array_type" id="array_type">
+                    <option value="random">random</option>
+                    <option value="sorted">sorted</option>
+                    <option value="reversed">reversed</option>
+                </select>
+                <input type="submit" id="generate" class="generate" value="Generate">
+            </form>
+        </div>
+
+        {% if array %}
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for algorithm, time in results.items() %}
+                <tr>
+                    <td>{{ algorithm }}</td>
+                    <td>{{ time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        <div class="array">
+            <p>{{ array_cp }}</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
